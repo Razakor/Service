@@ -1,6 +1,6 @@
 package com.razakor.task.service.services;
 
-import com.razakor.task.service.model.Trolleybus;
+import com.razakor.task.service.model.Trolleybuses;
 import com.razakor.task.service.repositories.TrolleybusRepository;
 
 import java.util.List;
@@ -14,12 +14,12 @@ public class TrolleybusServiceImpl implements TrolleybusService {
     }
 
     @Override
-    public Trolleybus findTrolleybusByNumber(String number) {
+    public Trolleybuses findTrolleybusByNumber(String number) {
         return trolleybusRepository.findById(number).get();
     }
 
     @Override
-    public List<Trolleybus> findAllTrolleybuses() {
+    public List<Trolleybuses> findAllTrolleybuses() {
         return trolleybusRepository.findAll();
     }
 }

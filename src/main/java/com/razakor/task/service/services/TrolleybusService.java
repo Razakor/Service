@@ -1,12 +1,12 @@
 package com.razakor.task.service.services;
 
-import com.razakor.task.service.model.Trolleybus;
+import com.razakor.task.service.model.Trolleybuses;
 
 import java.util.List;
 
 public interface TrolleybusService {
 
-    Trolleybus findTrolleybusByNumber(String number);
+    Trolleybuses findTrolleybusByNumber(String number);
 
-    List<Trolleybus> findAllTrolleybuses();
+    List<Trolleybuses> findAllTrolleybuses();
 }
