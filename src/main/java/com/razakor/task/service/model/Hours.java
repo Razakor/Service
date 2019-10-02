@@ -1,16 +1,17 @@
 package com.razakor.task.service.model;
 
 import lombok.Data;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
+@Table(name = "hours")
 public class Hours {
     @Id
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name = "trolleybus_number")
     private String trolleybusNumber;
     @Column(name = "stop_name")
@@ -18,5 +19,16 @@ public class Hours {
     @Column(name = "val")
     private String value;
     @Column(name = "is_work_day")
-    private boolean isWorkDay;
+    private Boolean isWorkDay;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "hour")
+    private Set<Minutes> users;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "trolleybus_number", nullable = false, insertable = false, updatable = false)
+    private Trolleybuses trolleybus;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "stop_name", nullable = false, insertable = false, updatable = false)
+    private Stops stop;
 }

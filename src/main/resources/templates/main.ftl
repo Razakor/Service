@@ -5,11 +5,14 @@
 </head>
     <body>
     <form method="post">
-        <input type="text" name="text" placeholder="Введите сообщение" />
-        <input type="text" name="tag" placeholder="Тэг">
-        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button type="submit">Добавить</button>
+        <input type="text" name="firstStop" placeholder="Введіть назву зупинки" />
+        <input type="text" name="secondStop" placeholder="Введіть назву місця призначення">
+        <button type="submit">Знайти</button>
     </form>
-        ${msg}
+    <#list trolleybuses as trolleybus>
+    <p>${trolleybus}
+        <#else>
+    <p>Nothing
+        </#list>
     </body>
 </html>
