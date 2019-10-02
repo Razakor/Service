@@ -1,5 +1,6 @@
 package com.razakor.task.service.bootstrap;
 
+import com.razakor.task.service.model.Data;
 import com.razakor.task.service.repositories.HourRepository;
 import com.razakor.task.service.repositories.MinuteRepository;
 import com.razakor.task.service.repositories.StopRepository;
@@ -36,5 +37,6 @@ public class BootStrapData implements ApplicationRunner {
         System.out.println("Stops Saved: " + stopRepository.count());
         System.out.println("Hours Saved: " + hourRepository.count());
         System.out.println("Minutes Saved: " + minuteRepository.count());
+        Data.trolleybuses = trolleybusRepository.findAll();
     }
 }
