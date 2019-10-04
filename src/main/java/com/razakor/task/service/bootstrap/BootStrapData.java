@@ -1,6 +1,7 @@
 package com.razakor.task.service.bootstrap;
 
 import com.razakor.task.service.model.Data;
+import com.razakor.task.service.model.Hours;
 import com.razakor.task.service.repositories.HourRepository;
 import com.razakor.task.service.repositories.MinuteRepository;
 import com.razakor.task.service.repositories.StopRepository;
@@ -8,6 +9,8 @@ import com.razakor.task.service.repositories.TrolleybusRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class BootStrapData implements ApplicationRunner {
@@ -38,5 +41,13 @@ public class BootStrapData implements ApplicationRunner {
         System.out.println("Hours Saved: " + hourRepository.count());
         System.out.println("Minutes Saved: " + minuteRepository.count());
         Data.trolleybuses = trolleybusRepository.findAll();
+        List<Hours> hours = hourRepository.findAll();
+        hours.stream().forEach(hour -> {
+            if(hour.getWorkDay()) {
+                Data.workDayHours.add(hour);
+            } else {
+                Data.weekEndHours.add(hour);
+            }
+        });
     }
 }

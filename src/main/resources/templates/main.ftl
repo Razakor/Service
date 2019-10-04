@@ -9,10 +9,10 @@
         <input type="text" name="secondStop" placeholder="Введіть назву місця призначення">
         <button type="submit">Знайти</button>
     </form>
-    <#list trolleybuses as trolleybus>
+    <#list schedule as trolleybus>
     <p>${trolleybus}
         <#else>
-    <p>Nothing
+            Nothing
         </#list>
     </body>
 </html>

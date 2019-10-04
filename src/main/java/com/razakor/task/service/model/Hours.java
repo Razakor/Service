@@ -19,7 +19,7 @@ public class Hours {
     private Boolean isWorkDay;
 
     @OneToMany(fetch = FetchType.EAGER, targetEntity = Minutes.class, mappedBy = "hour")
-    private Set<Minutes> users;
+    private Set<Minutes> minutes;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "trolleybus_number", nullable = false, insertable = false, updatable = false)
@@ -32,13 +32,13 @@ public class Hours {
     public Hours() {
     }
 
-    public Hours(Integer id, String trolleybusNumber, String stopName, String value, Boolean isWorkDay, Set<Minutes> users, Trolleybuses trolleybus, Stops stop) {
+    public Hours(Integer id, String trolleybusNumber, String stopName, String value, Boolean isWorkDay, Set<Minutes> minutes, Trolleybuses trolleybus, Stops stop) {
         this.id = id;
         this.trolleybusNumber = trolleybusNumber;
         this.stopName = stopName;
         this.value = value;
         this.isWorkDay = isWorkDay;
-        this.users = users;
+        this.minutes = minutes;
         this.trolleybus = trolleybus;
         this.stop = stop;
     }
@@ -83,12 +83,12 @@ public class Hours {
         isWorkDay = workDay;
     }
 
-    public Set<Minutes> getUsers() {
-        return users;
+    public Set<Minutes> getMinutes() {
+        return minutes;
     }
 
-    public void setUsers(Set<Minutes> users) {
-        this.users = users;
+    public void setMinutes(Set<Minutes> users) {
+        this.minutes = minutes;
     }
 
     public Trolleybuses getTrolleybus() {
